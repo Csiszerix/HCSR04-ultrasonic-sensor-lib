@@ -12,7 +12,8 @@ HCSR04	KEYWORD1
 #  Methods and Functions (KEYWORD2)   #
 #######################################
 
-dist	KEYWORD2
+dist	    KEYWORD2
+updateSpeed	KEYWORD2
 
 #######################################
 #         Constants (LITERAL1)        #

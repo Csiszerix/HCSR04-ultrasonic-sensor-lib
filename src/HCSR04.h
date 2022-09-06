@@ -9,6 +9,8 @@ public:
 	~HCSR04();							//destructor
 	float dist() const;					//return curent distance of element 0
 	float dist(int n) const;			//return curent distance of element n
+	void updateSpeed(float temp);		//updates the speed of sound based on an additional temperature sensor
+	float speed;
 
 private:
 	void init(int out, int echo[], int n); //for constructor

@@ -5,6 +5,7 @@ void HCSR04::init(int out, int echo[], int n)
 	this->out = out;
 	this->echo = echo;
 	this->n = n;
+	this->updateSpeed(14.5);
 	pinMode(this->out, OUTPUT);
 	for (int i = 0; i < n; i++)
 		pinMode(this->echo[i], INPUT);
@@ -29,6 +30,12 @@ float HCSR04::dist(int n) const
 	noInterrupts();
 	float d = pulseIn(this->echo[n], HIGH, 23529.4); // max sensor dist ~4m
 	interrupts();
-	return d / 58.8235;
+	return d / 20000 * this->speed; // in cm
 }
+
 float HCSR04::dist() const { return this->dist(0); }
+
+///////////////////////////////////////////////////speed of sound
+void HCSR04::updateSpeed(float temp){
+	this->speed=331.3+0.6*temp;	
+}
